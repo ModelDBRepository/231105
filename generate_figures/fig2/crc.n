@@ -1,0 +1,5 @@
+ncol=27 detcol=l
+icol1=4 nicol2ar=2 icol2ar=7 10
+n_line_skip=10000 n_line_read=1048576 smap=0 time_max=200.0
+Tmax=100.0 T_between_peaks=20.0
+kpoints=200 base_intersect=0.0 inter_points=1

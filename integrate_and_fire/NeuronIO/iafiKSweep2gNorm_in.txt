@@ -1,0 +1,107 @@
+method r
+thalamic_input s
+modelType IAFi f
+win_IO_path ..\\NeuronIO f
+linux_IO_path ./ f
+matlab_path C:\\Users\\tomerarg\\Documents\\MATLAB\\ f
+running_parameter K_all
+#possible running_parameters: "single_run", A_T, K_all,sig_all...
+
+seed 6378
+pop_num 1
+runtime 6000
+transient 500
+timestep 0.05
+
+min_val 11
+max_val 66
+par_step 1
+realiz_num 20
+
+#example_neurons (any number of neurons can be specified):
+ex1pop 0 
+ex1neur 10
+
+#printflags:
+#for one run:
+p_rasters_firstrun 0
+p_trace_firstrun 0
+p_inputcurrs_firstrun 0
+p_spikes_per_touch_fr 0
+#[need to add: p_firing_rates_fr]
+
+# for sweeps -  not yet functional:
+p_sync_fig1 1
+p_mean_rates 0
+p_mean_CV 0
+p_chi 0
+p_quiescent_neurs 0
+p_dev_rates 0
+
+
+A_T 0.020
+B_T 0
+C_T 0
+
+sig_all 0
+
+sig_ki_ET 0
+sig_ki_EE 0
+sig_ki_EI 0
+sig_ki_IT 0
+sig_ki_IE 0
+sig_ki_II 0
+
+T 100
+tau_c 3
+t_c 50
+phi 0
+
+gL_E 0.05
+gL_I 0.1
+gKz_E 0.5
+gKz_I 0
+
+Iapp 0
+phi2 0.2
+
+N_T 200
+N_E 1600
+N_I 150
+
+tau_decay_T 2
+tau_decay_E 2
+tau_decay_I 3
+
+
+K_ET 50
+K_EE 200
+K_EI 25
+K_IT 75
+K_IE 400 
+K_II 25
+
+G_ET 0.15
+G_EE 0.2
+G_EI 0.7
+G_IT 0.2
+G_IE 0.6
+G_II 0.9
+
+tau_delay_ET 1
+tau_delay_EE 1
+tau_delay_EI 0.85
+tau_delay_IT 1
+tau_delay_IE 1
+tau_delay_II 0.5
+
+d_tau_ET 0
+d_tau_EE 0
+d_tau_EI 0
+d_tau_IT 0
+d_tau_IE 0
+d_tau_II 0
+
+flag_el 0
+Kel 25
+Gel 0.02

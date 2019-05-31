@@ -1,0 +1,99 @@
+scan=e
+T_CELL Av parmin=0.00001 parmax=30.00001 npar=30 nrepeat=10
+seed=1257
+npop=1 pop_name=T P
+noise=0.0
+T_CELL:
+Av=14.0 Bv=0.0 Tper=100.0 phi_read=0.5 Pi Bp=1.0 tcfrac=0.5 cycle tauc=3.0
+wd=p Cvmin=0.0 Cvmax=0.0 ds_type=n frac_only_p=0.0 frac_only_r=0.0
+Tall=6000.0 nspike_max=3000000 ntl=200 determine_phi=f thal_input=a
+nw=w Avnw=6.0 Tnw=500.0 Telev=150.0 Tw=350.0
+P_CELL: WB model
+gNa=100.0 gKdr=40.0 gKz=0.0 gL=0.1 DelgL=0.0 Iext=0.0 DelIext=0.0 fracIext=1.0
+Cm=1.0 VNa=55.0 VK=-90.0 VL=-65.0 Vopto=0.0 phi=0.2 gamma=0.0 gamma_for_syn=n
+rhd=15.0 Vinc1=-70.0 Vinc2=-65.0
+opto: amp=0.0 sig=0.3 freq=0.0
+inject_current=n ion_inject=1 Iinject=0.0 tinject=50.0
+SYNAPSE
+scalingc=k scaleK=s Kfactor=1.0
+Length=10 geom_dim=0 con_shape=g rho_concur=1.0 consider=y
+AMPA: ths=-20.0 sigs=2.0 tsynd=2.0 Vrev=0.0
+NMDA: tsynr=5.0 tsynd=10.0 Vrev=0.0
+ths=-20.0 sigs=2.0 thetanp=-50.0 sigmanp=12.5
+GABAA: ths=-20.0 sigs=2.0 tsynd=3.0 Vrev=-85.0
+GABAA_PP: DelVrev_O_DelIext=-4.0
+factETPT=1.0 process_time_delay=s
+PT
+Kin=75.0 CVKin=0.0 lam=1.0
+UU=0.25 taur=0.0001 tauf=1.0 xic=1.0 tau_delay=1.0 Del_tau_delay=0.0
+gAMPA=0.8 GAMPA=0.0924 Vpsp_AMPA=0.0
+gNMDA=0.0 GNMDA=0.0 Vpsp_NMDA=0.0
+PP
+Kin=25.0 CVKin=0.0 lam=1.0
+UU=0.25 taur=0.0001 tauf=1.0 xic=1.0 tau_delay=0.5 Del_tau_delay=0.0
+gGABAA=2.2 GGABAA=0.44 Vpsp_GABAA=-0.0
+gel=0.0 Gel=0.0 Kel=25.0
+GENERAL
+ndeltat=1 deltat=0.05 nt=120000
+method=r incond=b fpcal=n smforce=l
+T: nwrite=1 nwritear=1
+P: nwrite=8 nwritear=1 2 3 4 5 6 7 8
+write_aux=n twrite=10 tmcol=100000000.0 tstat=5500.0 traster=50000.0 sp=1
+nhist=100 t_touch_interval=25.0
+
+INITIAL CONDITIONS
+E
+V     h     n     b     z
+-70.0 0.8   0.2   0.15  0.1
+-70.0 0.8   0.2   0.15  0.1
+-70.0 0.8   0.2   0.15  0.1
+-70.0 0.8   0.2   0.15  0.1
+-70.0 0.8   0.2   0.15  0.1
+-70.0 0.8   0.2   0.15  0.1
+-70.0 0.8   0.2   0.15  0.1
+-70.0 0.8   0.2   0.15  0.1
+-70.0 0.8   0.2   0.15  0.1
+P
+V     h     n     a     b
+-70.0 0.88  0.01  0.25  0.59
+-70.0 0.88  0.01  0.25  0.59
+-70.0 0.88  0.01  0.25  0.59
+-70.0 0.88  0.01  0.25  0.59
+-70.0 0.88  0.01  0.25  0.59
+-70.0 0.88  0.01  0.25  0.59
+-70.0 0.88  0.01  0.25  0.59
+-70.0 0.88  0.01  0.25  0.59
+-70.0 0.88  0.01  0.25  0.59
+
+
+scalingc  : v - according to Vpsp, k - gsyn/sqrt(k)
+            b - background; G - conductance,
+            r - groups of pre-synaptic neurons.
+inject_current : y - yes, n - no
+determine_phi: f - fixed, u - uniformly random.
+thal_input: form of thalamic input: 
+            p - Poisson input, a - average conductance.
+nw        : y - episodes of non-whisking and whisking. n - no episodes,
+            l - linear transition from non-whisking to whisking. 
+wd        : whisker direction: p - protraction, r - retraction.
+ds_type   : direction selectivity type:
+            a - average, u - uniform betweeen Cvmin and Cvmax, n - Cvmin.
+scaleK    : s - strong synapses, w - weak synapses, n - no scaling of K's
+method    : r - Runge-Kutta 4, t - Runge-Kutta 2, e - Euler,
+            o - Runge-Kutta 4 with interaction calculated once,
+            w - Runge-Kutta 2 with interaction calculated once,
+incond    : t - from Vin - soma, aux=aux(V), s - from Vin - soma, aux=0,
+            n - from Vin, soma+dendrite, r - read.
+            a - random V, axu 0, b - random V, aux=aux(V),
+	    c - random V, constat aux, e - equal-spaced V, aux=aux(V).
+smforce   : p - always print (sm=0), n - always no print (sm=1), 
+            l - leave as is.
+geom_dim  : 0 - no effect of distance, 1 - 1d, 2 - 2d.
+con_shape : e - exponential, g - Gaussian.
+consider  : y - yes, no - no.
+process_time_delay: a - all together; s - spread of tau_delay
+write_aux : y - write auxiliary variables; n - write only V.
+
+MT=2 gamma=140 200
+GAMPA=0.0849 0.0849
+GNMDA=0.0 0.0

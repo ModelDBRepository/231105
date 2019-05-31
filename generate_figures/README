@@ -1,0 +1,23 @@
+The simulation program produces the computational figures of the article:
+
+Does Layer 4 in the barrel cortex function as a balanced circuit
+when responding to whisker movements?
+Tommer Argaman and David Golomb.
+
+The directories are:
+
+simulation_program: files of the simulation program in C of the
+conductance-based model.
+
+To compile the program, write:
+make tc
+
+generate_figures: There are 8 sub-directories, fig1 ... fig8.
+to generate panels of figures 1...8, write:
+
+cd fig{n} ({n}=1...8)
+fig{n}.com
+
+To generate panel 3D, simulate the integrate-and-fire model. Write:
+cd integrate_and_fire
+and follow ReadMe.txt there.
